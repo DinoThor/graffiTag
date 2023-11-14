@@ -1,12 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+
+import { StyleSheet } from 'react-native';
+import { PaperProvider } from 'react-native-paper';
+
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+
+import { MD3DarkTheme } from 'react-native-paper';
+import Home from './components/home/Home';
+
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <PaperProvider style={styles.container} theme={MD3DarkTheme}>
+      <NavigationContainer>
+        <Drawer.Navigator 
+          initialRouteName="Home"
+          screenOptions={{
+            headerShown: false
+          }}
+        >
+          <Drawer.Screen name="Home" component={Home} />
+          <Drawer.Screen name="Notifications" component={Home} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </PaperProvider>
   );
 }
 
