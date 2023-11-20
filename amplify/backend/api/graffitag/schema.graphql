@@ -1,0 +1,106 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+type Marker {
+  latLon: [Float!]!
+  url: String
+  userOwner: String!
+}
+
+type MarkerConnection {
+  items: [Marker]
+  nextToken: String
+}
+
+type Mutation {
+  createMarker(input: CreateMarkerInput!): Marker
+  deleteMarker(input: DeleteMarkerInput!): Marker
+  updateMarker(input: UpdateMarkerInput!): Marker
+}
+
+type Query {
+  getMarker(userOwner: String!): Marker
+  listMarker(filter: TableMarkerFilterInput, limit: Int, nextToken: String): MarkerConnection
+}
+
+type Subscription {
+  onCreateMarker(userOwner: String): Marker @aws_subscribe(mutations : ["createMarker"])
+  onDeleteMarker(userOwner: String): Marker @aws_subscribe(mutations : ["deleteMarker"])
+  onUpdateMarker(userOwner: String): Marker @aws_subscribe(mutations : ["updateMarker"])
+}
+
+input CreateMarkerInput {
+  latLon: [Float!]
+  url: String
+  userOwner: String!
+}
+
+input DeleteMarkerInput {
+  userOwner: String!
+}
+
+input TableBooleanFilterInput {
+  eq: Boolean
+  ne: Boolean
+}
+
+input TableFloatFilterInput {
+  between: [Float]
+  eq: Float
+  ge: Float
+  gt: Float
+  le: Float
+  lt: Float
+  ne: Float
+}
+
+input TableIDFilterInput {
+  beginsWith: ID
+  between: [ID]
+  contains: ID
+  eq: ID
+  ge: ID
+  gt: ID
+  le: ID
+  lt: ID
+  ne: ID
+  notContains: ID
+}
+
+input TableIntFilterInput {
+  between: [Int]
+  eq: Int
+  ge: Int
+  gt: Int
+  le: Int
+  lt: Int
+  ne: Int
+}
+
+input TableMarkerFilterInput {
+  userOwner: TableStringFilterInput
+}
+
+input TableStringFilterInput {
+  beginsWith: String
+  between: [String]
+  contains: String
+  eq: String
+  ge: String
+  gt: String
+  le: String
+  lt: String
+  ne: String
+  notContains: String
+}
+
+input UpdateMarkerInput {
+  userOwner: String!
+}

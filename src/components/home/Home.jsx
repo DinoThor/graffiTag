@@ -1,21 +1,21 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-import { View, Dimensions, StyleSheet, KeyboardAvoidingView  } from 'react-native';
+import { View, Dimensions, StyleSheet, KeyboardAvoidingView } from 'react-native';
 
-import { IconButton, Searchbar } from 'react-native-paper';
+import { IconButton, Props, Searchbar } from 'react-native-paper';
 import Map from '../map/Map';
 
-import { Marker } from 'react-native-maps';
 
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
 
 function Home({ navigation }) {
+  // const navigation = useNavigation<NavigationProp>()
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
     <View style={styles.container} >
-      <Map style={styles.container}/>
+      <Map style={styles.container} />
       <View style={styles.addButton}>
         <IconButton
           icon='plus-circle'

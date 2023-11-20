@@ -7,7 +7,11 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { MD3DarkTheme } from 'react-native-paper';
-import Home from './components/home/Home';
+import Home from './src/components/home/Home';
+
+import { Amplify, API, graphqlOperation } from 'aws-amplify';
+import awsExports from './src/aws-exports';
+Amplify.configure(awsExports);
 
 const Drawer = createDrawerNavigator();
 

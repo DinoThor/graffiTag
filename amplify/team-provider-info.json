@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-graffitag-dev-160008-authRole",
+      "UnauthRoleArn": "arn:aws:iam::149235849676:role/amplify-graffitag-dev-160008-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::149235849676:role/amplify-graffitag-dev-160008-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-graffitag-dev-160008-deployment",
+      "UnauthRoleName": "amplify-graffitag-dev-160008-unauthRole",
+      "StackName": "amplify-graffitag-dev-160008",
+      "StackId": "arn:aws:cloudformation:eu-central-1:149235849676:stack/amplify-graffitag-dev-160008/806ab050-87b5-11ee-9144-060f69882a25",
+      "AmplifyAppId": "d3hzm18hzt369m"
+    },
+    "categories": {
+      "api": {
+        "graffitag": {}
+      }
+    }
+  }
+}
