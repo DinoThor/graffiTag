@@ -1,21 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { View, Image } from 'react-native';
 
-import { View, Dimensions, StyleSheet, KeyboardAvoidingView } from 'react-native';
+import { IconButton, Searchbar, Text } from 'react-native-paper';
+import SlidingUpPanel from 'rn-sliding-up-panel';
 
-import { IconButton, Props, Searchbar } from 'react-native-paper';
 import Map from '../map/Map';
 
-
-const width = Dimensions.get('window').width
-const height = Dimensions.get('window').height
+import styles from './styles';
 
 function Home({ navigation }) {
-  // const navigation = useNavigation<NavigationProp>()
   const [searchQuery, setSearchQuery] = useState('');
+  const [slider, setSlider] = useState(-1);
+
+  useEffect(() => {
+    if (slider === -1) this._mapSlide.hide()
+    else this._mapSlide.show()
+  }, [slider])
 
   return (
     <View style={styles.container} >
-      <Map style={styles.container} />
+      <Map style={styles.container} setSlider={setSlider}/>
       <View style={styles.addButton}>
         <IconButton
           icon='plus-circle'
@@ -38,32 +42,28 @@ function Home({ navigation }) {
           }
         />
       </View>
+      <SlidingUpPanel
+        ref={c => this._mapSlide = c}
+        draggableRange={styles.sliderRange}
+        onBottomReached={() => setSlider(() => -1)}
+        snappingPoints={[300, 0]}
+        showBackdrop={true}
+        backdropOpacity={0}
+      >
+        <View style={styles.sliderStyle}
+        >
+          <Image
+            source={require('../map/graf.jpg')}
+            style={styles.graffitiStyle}
+            resizeMode='cover' />
+          <Text style={{ color: 'black' }}>AAAAAAAAAAAAAAAA</Text>
+        </View>
+      </SlidingUpPanel>
+      <View>
+
+      </View>
     </View >
   );
 }
 
 export default Home;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  mapStype: {
-    width: '100%',
-    height: '100%',
-  },
-  addButton: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: height * 0.02,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  searchBar: {
-    position: 'absolute',
-    top: height * 0.065,
-    left: width * 0.05,
-    right: width * 0.05
-  }
-});

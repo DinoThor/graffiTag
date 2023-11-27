@@ -1,32 +1,47 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createMarker = /* GraphQL */ `
-  mutation CreateMarker($input: CreateMarkerInput!) {
-    createMarker(input: $input) {
-      latLon
-      url
-      userOwner
+export const createTodo = /* GraphQL */ `
+  mutation CreateTodo(
+    $condition: ModelTodoConditionInput
+    $input: CreateTodoInput!
+  ) {
+    createTodo(condition: $condition, input: $input) {
+      createdAt
+      description
+      id
+      name
+      updatedAt
       __typename
     }
   }
 `;
-export const deleteMarker = /* GraphQL */ `
-  mutation DeleteMarker($input: DeleteMarkerInput!) {
-    deleteMarker(input: $input) {
-      latLon
-      url
-      userOwner
+export const deleteTodo = /* GraphQL */ `
+  mutation DeleteTodo(
+    $condition: ModelTodoConditionInput
+    $input: DeleteTodoInput!
+  ) {
+    deleteTodo(condition: $condition, input: $input) {
+      createdAt
+      description
+      id
+      name
+      updatedAt
       __typename
     }
   }
 `;
-export const updateMarker = /* GraphQL */ `
-  mutation UpdateMarker($input: UpdateMarkerInput!) {
-    updateMarker(input: $input) {
-      latLon
-      url
-      userOwner
+export const updateTodo = /* GraphQL */ `
+  mutation UpdateTodo(
+    $condition: ModelTodoConditionInput
+    $input: UpdateTodoInput!
+  ) {
+    updateTodo(condition: $condition, input: $input) {
+      createdAt
+      description
+      id
+      name
+      updatedAt
       __typename
     }
   }

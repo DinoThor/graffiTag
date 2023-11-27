@@ -1,32 +1,38 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateMarker = /* GraphQL */ `
-  subscription OnCreateMarker($userOwner: String) {
-    onCreateMarker(userOwner: $userOwner) {
-      latLon
-      url
-      userOwner
+export const onCreateTodo = /* GraphQL */ `
+  subscription OnCreateTodo($filter: ModelSubscriptionTodoFilterInput) {
+    onCreateTodo(filter: $filter) {
+      createdAt
+      description
+      id
+      name
+      updatedAt
       __typename
     }
   }
 `;
-export const onDeleteMarker = /* GraphQL */ `
-  subscription OnDeleteMarker($userOwner: String) {
-    onDeleteMarker(userOwner: $userOwner) {
-      latLon
-      url
-      userOwner
+export const onDeleteTodo = /* GraphQL */ `
+  subscription OnDeleteTodo($filter: ModelSubscriptionTodoFilterInput) {
+    onDeleteTodo(filter: $filter) {
+      createdAt
+      description
+      id
+      name
+      updatedAt
       __typename
     }
   }
 `;
-export const onUpdateMarker = /* GraphQL */ `
-  subscription OnUpdateMarker($userOwner: String) {
-    onUpdateMarker(userOwner: $userOwner) {
-      latLon
-      url
-      userOwner
+export const onUpdateTodo = /* GraphQL */ `
+  subscription OnUpdateTodo($filter: ModelSubscriptionTodoFilterInput) {
+    onUpdateTodo(filter: $filter) {
+      createdAt
+      description
+      id
+      name
+      updatedAt
       __typename
     }
   }

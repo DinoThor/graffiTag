@@ -1,27 +1,41 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getMarker = /* GraphQL */ `
-  query GetMarker($userOwner: String!) {
-    getMarker(userOwner: $userOwner) {
+export const getAllMarkers = /* GraphQL */ `
+  query GetAllMarkers($inutil: Int) {
+    getAllMarkers(inutil: $inutil) {
+      id
       latLon
       url
-      userOwner
       __typename
     }
   }
 `;
-export const listMarker = /* GraphQL */ `
-  query ListMarker(
-    $filter: TableMarkerFilterInput
+export const getTodo = /* GraphQL */ `
+  query GetTodo($id: ID!) {
+    getTodo(id: $id) {
+      createdAt
+      description
+      id
+      name
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listTodos = /* GraphQL */ `
+  query ListTodos(
+    $filter: ModelTodoFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listMarker(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        latLon
-        url
-        userOwner
+        createdAt
+        description
+        id
+        name
+        updatedAt
         __typename
       }
       nextToken
